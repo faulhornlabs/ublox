@@ -1,0 +1,12 @@
+# Configuration Settings for C94-M8P device
+ublox_gps_node:
+  ros__parameters:
+    debug: 1                    # Range 0-4 (0 means no debug statements will print)
+
+    device: /dev/ttyACM0
+    frame_id: gps
+
+    uart1:
+      baudrate: 38400           # ZED-F9P specific
+
+    config_on_startup: false
