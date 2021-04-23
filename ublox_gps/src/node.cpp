@@ -70,6 +70,11 @@
 #include <ublox_gps/ublox_firmware8.hpp>
 #include <ublox_gps/ublox_firmware9.hpp>
 
+#if defined(ERROR)
+#undef ERROR
+#endif
+
+
 namespace ublox_node {
 
 /**
@@ -611,7 +616,7 @@ void UbloxNode::processMonVer() {
     RCLCPP_DEBUG(this->get_logger(), "%s",
                  std::string(monVer.extension[i].field.begin(), monVer.extension[i].field.end()).c_str());
     // Find the end of the string (null character)
-    unsigned char* end = std::find(monVer.extension[i].field.begin(),
+    auto end = std::find(monVer.extension[i].field.begin(),
                                    monVer.extension[i].field.end(), '\0');
     extensions.emplace_back(std::string(monVer.extension[i].field.begin(), end));
   }

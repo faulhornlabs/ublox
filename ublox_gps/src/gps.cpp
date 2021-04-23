@@ -40,6 +40,10 @@
 
 #include <rclcpp/rclcpp.hpp>
 
+#if defined(ERROR)
+#undef ERROR
+#endif
+
 #include <ublox_gps/gps.hpp>
 #include <ublox_msgs/ublox_msgs.hpp>
 
@@ -136,13 +140,13 @@ void Gps::initializeSerial(const std::string & port, unsigned int baudrate,
   }
 
   RCLCPP_INFO(logger_, "U-Blox: Opened serial port %s", port.c_str());
-
+#if !defined(_WIN32)
   int fd = serial->native_handle();
   termios tio{};
   tcgetattr(fd, &tio);
   cfmakeraw(&tio);
   tcsetattr(fd, TCSANOW, &tio);
-
+#endif
   // Set the I/O worker
   if (worker_) {
     return;

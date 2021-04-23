@@ -327,6 +327,9 @@ class Message {
   static std::vector<std::pair<uint8_t,uint8_t> > keys_;
 };
 
+template <typename T>
+std::vector<std::pair<uint8_t,uint8_t> > ublox::Message<T>::keys_;
+
 /**
  * @brief Options for the Reader and Writer for encoding and decoding messages.
  */

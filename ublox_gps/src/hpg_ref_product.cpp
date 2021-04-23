@@ -16,6 +16,11 @@
 #include <ublox_gps/rtcm.hpp>
 #include <ublox_gps/utils.hpp>
 
+#if defined(ERROR)
+#undef ERROR
+#endif
+
+
 namespace ublox_node {
 
 //

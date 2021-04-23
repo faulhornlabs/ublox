@@ -31,8 +31,8 @@
 
 #include <ublox_msgs/serialization.hpp>
 
-template <typename T>
-std::vector<std::pair<uint8_t,uint8_t> > ublox::Message<T>::keys_;
+//template <typename T>
+//std::vector<std::pair<uint8_t,uint8_t> > ublox::Message<T>::keys_;
 
 DECLARE_UBLOX_MESSAGE(ublox_msgs::Class::NAV, ublox_msgs::Message::NAV::ATT,
                       ublox_msgs, NavATT)

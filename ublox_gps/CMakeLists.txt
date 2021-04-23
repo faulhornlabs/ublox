@@ -9,7 +9,7 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
-
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 find_package(ament_cmake_ros REQUIRED)
@@ -60,6 +60,8 @@ ament_target_dependencies(ublox_gps
   "ublox_msgs"
   "ublox_serialization"
 )
+
+target_compile_definitions(ublox_gps PUBLIC _USE_MATH_DEFINES)
 
 install(TARGETS ublox_gps
   ARCHIVE DESTINATION lib

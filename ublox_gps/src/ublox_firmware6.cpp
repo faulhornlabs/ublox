@@ -22,6 +22,11 @@
 #include <ublox_gps/ublox_firmware6.hpp>
 #include <ublox_gps/utils.hpp>
 
+#if defined(ERROR)
+#undef ERROR
+#endif
+
+
 namespace ublox_node {
 
 //
