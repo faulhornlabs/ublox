@@ -3,10 +3,41 @@ ublox_gps_node:
   ros__parameters:
     debug: 1                    # Range 0-4 (0 means no debug statements will print)
 
+    save:
+      device: 0                 # Do not save
+      mask: 0                   # This has no effect since protocol v23.01
+
     device: /dev/ttyACM0
     frame_id: gps
 
     uart1:
       baudrate: 38400           # ZED-F9P specific
 
-    config_on_startup: false
+    rate: 10.0                   # in Hz
+    nav_rate: 1                 # [# of measurement cycles], recommended 1 Hz, may
+                                # be either 5 Hz (Dual constellation) or
+                                # 8 Hz (GPS only)
+
+    dynamic_model: portable     #  (default) Applications with low acceleration, e.g. portable devices.
+                                # Suitable for most situations.
+
+    fix_mode: auto              # Type of fixes supported: 2d, 3d or both.
+    enable_ppp: true           # Enable precise-point-positioning system.
+                                # Supported by ZED-F9P
+
+    dr_limit: 0                 # Max time in seconds to use dead reckoning after signal is lost. Defaults to 0. 
+
+    gnss:
+      beidou: true
+      galileo: true
+      glonass: true
+      gps: true
+      imes: false
+      qzss: false
+      sbas: false
+
+    hnr:                       # High Navigation Rate. Interpolates between solutions
+      pvt: true
+
+    tmode3: 0                  # Time Mode disabled
+    config_on_startup: true
